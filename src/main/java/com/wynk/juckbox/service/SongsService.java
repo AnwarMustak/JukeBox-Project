@@ -14,7 +14,6 @@ public class SongsService {
                 result=true;
                 break;
             }
-
         }
         return result;
     }
@@ -23,26 +22,29 @@ public class SongsService {
         if (songAvilable(song.getSongName(),songsList)==false){
             result=songsDAO.insertJuckbox(song);
         }
+
         return result;
+
     }
-    public ArrayList<Songs>getSongs() throws SQLException{
-        ArrayList<Songs> result =songsDAO.selectAllJuckbox();
+    public ArrayList<Songs>getSongs() throws SQLException {
+        ArrayList<Songs> result = songsDAO.selectAllJuckbox();
         return result;
+
     }
     public void displaySongs() throws SQLException{
         ArrayList<Songs> songsList = songsDAO.selectAllJuckbox();
-        System.out.format("%10s %30s %20s %15s %25s", "Song Id","Song Name","Artist Name", "Genre", "Album Name", "Duration \n");
-        System.out.println();
+        System.out.format("%10s %30s %30s %15s %20s %25s", "Song Id","Song Name","Artist Name", "Genre", "Album Name", "Duration\n");
+        System.out.println("****************************************************************************************************************************************");
         for(Songs songs : songsList){
             System.out.println(songs);
         }
     }
-    public ArrayList<Songs> selectSongsByAlbum(String albumName,ArrayList<Songs> songsList){
+    public ArrayList<Songs> selectSongsByAlbum(String albumName,ArrayList<Songs> songsList)throws Exception{
         ArrayList<Songs> songsInAlbum =null;
         if(songsList.isEmpty()==false) {
             songsInAlbum = new ArrayList<>();
             for (Songs songs : songsList) {
-                if (songs.getAlbum().equalsIgnoreCase(albumName)) {
+                if (songs.getAlbum().trim().equalsIgnoreCase(albumName)) {
                   songsInAlbum.add(songs);
                 }
             }
@@ -55,7 +57,7 @@ public class SongsService {
         if (songsArrayList.isEmpty() == false) {
             songsByName = new ArrayList<>();
             for (Songs songs : songsArrayList) {
-                if (songs.getAlbum().contains(songName)) {
+                if (songs.getSongName().equalsIgnoreCase(songName)) {
                     songsByName.add(songs);
                 }
             }
@@ -67,7 +69,7 @@ public class SongsService {
         if (songsArrayList.isEmpty() == false) {
             songsByArtist = new ArrayList<>();
             for (Songs songs : songsArrayList) {
-                if (songs.getAlbum().contains(artistName)) {
+                if (songs.getAitistName().equalsIgnoreCase(artistName)) {
                     songsByArtist.add(songs);
                 }
             }
@@ -79,7 +81,7 @@ public class SongsService {
         if (songsArrayList.isEmpty() == false) {
             songsByGenre = new ArrayList<>();
             for (Songs songs : songsArrayList) {
-                if (songs.getAlbum().contains(Genre)) {
+                if (songs.getGener().equalsIgnoreCase(Genre)) {
                     songsByGenre.add(songs);
                 }
             }

@@ -20,8 +20,10 @@ public class PlayListContentDAO
     public ArrayList<Integer> viewSong(int playlistId)throws SQLException
     {
         ArrayList<Integer> song = new ArrayList<>();
-        Statement selectStatement = JuckboxConnection.getJuckboxConnection().createStatement();
-        ResultSet resultSet = selectStatement.executeQuery("select*from PlayListSongs where playlist_Id=?");
+        PreparedStatement selectStatement = JuckboxConnection.getJuckboxConnection().prepareStatement("select*from PlayListSongs where playlistId=?");
+
+        selectStatement.setInt(1,playlistId);
+        ResultSet resultSet= selectStatement.executeQuery();
         while(resultSet.next()){
             song.add(resultSet.getInt(2));
         }

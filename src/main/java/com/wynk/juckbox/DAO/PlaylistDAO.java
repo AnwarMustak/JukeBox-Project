@@ -7,10 +7,10 @@ import java.sql.Statement;
 import java.util.Hashtable;
 
 public class PlaylistDAO {
-    public static boolean createPlaylist(String playlistName) throws SQLException {
-        PreparedStatement createPlaylist = JuckboxConnection.getJuckboxConnection().prepareStatement("insert into list values(?,?);");
-        createPlaylist.setInt(2, 45);
-        createPlaylist.setString(3, "playlistName");
+    public static boolean createPlaylist(String playlistName,int playlistId) throws SQLException {
+        PreparedStatement createPlaylist = JuckboxConnection.getJuckboxConnection().prepareStatement("insert into playlist values(?,?);");
+        createPlaylist.setInt(1,playlistId);
+        createPlaylist.setString(2, playlistName);
         int check = createPlaylist.executeUpdate();
         return check > 0 ? true : false;
     }
@@ -20,7 +20,7 @@ public class PlaylistDAO {
         Statement selectStatement = JuckboxConnection.getJuckboxConnection().createStatement();
         ResultSet resultSet = selectStatement.executeQuery("select*from playlist");
         while (resultSet.next()){
-            playlist.put(resultSet.getString(2),resultSet.getInt(2));
+            playlist.put(resultSet.getString(2),resultSet.getInt(1));
         }
         return playlist;
 

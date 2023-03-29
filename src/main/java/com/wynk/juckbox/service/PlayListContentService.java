@@ -13,7 +13,7 @@ public class PlayListContentService {
 public boolean addSongtOPlaylist(ArrayList<Songs> songsList, Hashtable<String,Integer>playlist,String songName,String playlistName)throws Exception
 {
 boolean result = false;
-if(songName!=null||playlistName!=null||playlist.isEmpty()||songsList.isEmpty()) {
+if(songName!=null||playlistName!=null||!playlist.isEmpty()&&!songsList.isEmpty()) {
     int playlistId = playlist.get(playlistName);
     int songId = 0;
     for (Songs songs : songsList) {
@@ -32,9 +32,9 @@ if(songName!=null||playlistName!=null||playlist.isEmpty()||songsList.isEmpty()) 
 }
 return result;
 }
-public boolean addSongByAlbumName(ArrayList<Songs> songsList, Hashtable<String,Integer>playlist,String albumName,String playlistName) throws Exception {
+    public boolean addSongByAlbumName(ArrayList<Songs> songsList, Hashtable<String,Integer>playlist,String albumName,String playlistName) throws Exception {
     boolean result = false;
-    if (playlistName != null || playlist.isEmpty() || songsList.isEmpty()) {
+    if (playlistName == null || playlist.isEmpty() || songsList.isEmpty()) {
         throw new Exception("Please provide all values");
     } else {
         int playlistId = playlist.get(playlistName);
@@ -60,22 +60,22 @@ public boolean addSongByAlbumName(ArrayList<Songs> songsList, Hashtable<String,I
     public  ArrayList<Songs> playlistContent(String playlistname, Hashtable<String, Integer> playlist, ArrayList<Songs> songlist) throws Exception{
     ArrayList<Integer> songIdList;
     ArrayList<Songs> songList = null;
-    if(playlistname!=null||playlist.isEmpty()||songlist.isEmpty()){
+    if(playlistname==null||playlist.isEmpty()||songlist.isEmpty()){
         throw new Exception("Required details");
     }else {
-        int playListId=playlist.get(playlistname);
-        if (playListId==0)
+        int playListId=0;
+        if (playlist.containsKey(playlistname)==false)
         {
-            throw new Exception("Empty");
-
+            throw new Exception("Playlist is not present");
         }
         else {
+            playListId=playlist.get(playlistname);
             songIdList=playListContentDAO.viewSong(playListId);
         }
         if(songIdList.isEmpty()==false){
             songList=new ArrayList<>();
             for (int id : songIdList){
-                for (Songs songs : songList){
+                for (Songs songs : songlist){
                     if (songs.getSongId()==id)
                         songList.add(songs);
                 }
@@ -86,4 +86,5 @@ public boolean addSongByAlbumName(ArrayList<Songs> songsList, Hashtable<String,I
     }
     return songList;
     }
+
 }

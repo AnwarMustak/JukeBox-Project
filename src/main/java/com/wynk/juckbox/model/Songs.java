@@ -5,24 +5,15 @@ public class Songs {
     private int songId;
     private String songName;
     private String aitistName;
-    private String gender;
+    private String gener;
     private String album;
     private String duration;
-
-    public Songs(String songName, String aitistName, String gender, String album, String duration) {
-        this.songName = songName;
-        this.aitistName = aitistName;
-        this.gender = gender;
-        this.album = album;
-        this.duration = duration;
-    }
-
-    public Songs(int songId, String songName, String aitistName, String gender, String album, String duration) {
+    public Songs(int songId, String songName, String aitistName, String gener, String album, String duration) {
 
         this.songId = songId;
         this.songName = songName;
         this.aitistName = aitistName;
-        this.gender = gender;
+        this.gener = gener;
         this.album = album;
         this.duration = duration;
     }
@@ -51,12 +42,12 @@ public class Songs {
         this.aitistName = aitistName;
     }
 
-    public String getGender() {
-        return gender;
+    public String getGener() {
+        return gener;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGener(String gender) {
+        this.gener = gender;
     }
 
     public String getAlbum() {
@@ -77,13 +68,6 @@ public class Songs {
 
     @Override
     public String toString() {
-        return "Songs{" +
-                "songId=" + songId +
-                ", songName='" + songName + '\'' +
-                ", aitistName='" + aitistName + '\'' +
-                ", gender='" + gender + '\'' +
-                ", album='" + album + '\'' +
-                ", duration='" + duration + '\'' +
-                '}';
+        return String.format("%7s\t%30s\t%30s\t%15s\t%20s\t\t%20s",songId,songName,aitistName,gener,album,duration)+"\n";
     }
 }
