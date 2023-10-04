@@ -14,7 +14,6 @@ public class SongsService {
     public void displayData() throws Exception {
         if (getSongsList() == null) {
             System.out.println("There No Songs Present In Your Data Base");
-
         } else {
             System.out.format("%5s\t%20s\t%20s\t%20s\t%20s\t%20s\t", "song_id", "song_name", "artist_name", "genre", "album_name", "duration");
             System.out.println(" ");
@@ -48,7 +47,7 @@ public class SongsService {
             songsDAO.insertSong(song);
             result = true;
         } else {
-            throw new JukeboxException("Please Provide Data to Song in data base");
+            throw new JukeboxException("Song Is Already Present In the Songs list");
         }
         return result;
 

@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import java.util.Iterator;
 import java.util.Set;
 
 public class PlayListContentService {

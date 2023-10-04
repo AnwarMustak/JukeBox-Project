@@ -2,7 +2,7 @@ package org.niit.jukebox.service;
 
 import org.niit.jukebox.dao.PlaylistDAO;
 import org.niit.jukebox.exception.JukeboxException;
-import org.niit.jukebox.model.Songs;
+
 
 import java.sql.SQLException;
 import java.util.Hashtable;

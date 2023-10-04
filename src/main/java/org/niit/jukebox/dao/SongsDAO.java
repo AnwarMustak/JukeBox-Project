@@ -1,5 +1,4 @@
 package org.niit.jukebox.dao;
-
 import org.niit.jukebox.exception.JukeboxException;
 import org.niit.jukebox.model.Songs;
 
@@ -8,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class SongsDAO {
     //song_name,artist_name,genre,album_name,duration
@@ -21,6 +21,9 @@ public class SongsDAO {
                 songsArrayList.add(new Songs(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6)));
             }
         }
+//        Comparator<Songs> songsComparator=(o1, o2) ->o1.getSong_name().trim().compareTo(o2.getSong_name());
+//        songsArrayList.sort(songsComparator);
+//
         return songsArrayList;
     }
     //insert  songs(song_name,artist_name,genre,album_name,duration) values('Jawan Title Track','Anirudh Ravichander','Rock','Jawan','4:20');

@@ -6,11 +6,9 @@ import org.niit.jukebox.service.PlayListService;
 import org.niit.jukebox.service.PlayerService;
 import org.niit.jukebox.service.SongsService;
 
-import javax.sound.sampled.LineUnavailableException;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.nio.file.InvalidPathException;
+
 import java.util.*;
 
 
@@ -285,7 +283,6 @@ public class JukeboxMain {
                             case 2:
                                 try {
                                     playlistdata = playListService.getAllPlayList();
-                                    songsList = songsService.getSongsList();
                                     System.out.println("Please enter the Playlist Name : ");
                                     String newPlaylistName = scanner.nextLine();
                                     if (newPlaylistName != null) {

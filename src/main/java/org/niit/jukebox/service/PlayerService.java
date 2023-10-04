@@ -3,9 +3,7 @@ package org.niit.jukebox.service;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.nio.file.InvalidPathException;
-import java.util.Scanner;
+
 // file using Clip Object
 
 import javax.sound.sampled.AudioInputStream;
