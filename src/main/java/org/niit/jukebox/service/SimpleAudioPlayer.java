@@ -36,7 +36,7 @@ public class SimpleAudioPlayer {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     public AudioInputStream audioInputStream(int songId) throws UnsupportedAudioFileException, IOException {
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/akhil/Documents/NIITCourse/JavaPractice/Course 6/Sprint-3/Jukebox/src/main/resources/songs/108.wav").getAbsoluteFile());
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/songs/"+songId+".wav").getAbsoluteFile());
         return audioInputStream;
     }
 
